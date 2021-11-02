@@ -5,7 +5,11 @@ import { MdInfoOutline } from 'react-icons/md';
 
 import Button from './Button'
 
-const MainBannerWrapper = styled.div`
+interface IProps {
+  backdrop?: string;
+}
+
+const MainBannerWrapper = styled('div')<IProps>`
   box-sizing: border-box;
   display: flex;
   justify-content: space-between;
@@ -107,6 +111,11 @@ const MainBannerWrapper = styled.div`
   }
 `
 
+type Props = {
+  //movie: Array<PropsMovie>
+  movie: any
+}
+
 type PropsMovie = {
   title: string,
   overview: string,
@@ -114,10 +123,6 @@ type PropsMovie = {
   poster_path: string,
   vote_average: number,
   id: number
-}
-
-type Props = {
-  movie: Array<PropsMovie>
 }
 
 const MainBanner: FC<Props> = ({ movie }) => {

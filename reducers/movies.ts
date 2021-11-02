@@ -59,13 +59,13 @@ export const moviesSlice = createSlice({
     });
 
     // When a server responses with an error:
-    builder.addCase(fetchPlayingMovies.rejected, 
+   /* builder.addCase(fetchPlayingMovies.rejected, 
       (state, { payload }) => {
       // We show the error message
       // and change `status` back to `idle` again.
       if (payload) state.error = payload.message
       state.status = "idle"
-    });
+    });*/
   }
 })
 

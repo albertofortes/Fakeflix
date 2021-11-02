@@ -16,7 +16,7 @@ const initialState: MovieState = {
 
 export const fetchMovieById = createAsyncThunk(
   'movie/fetchMovieById',
-  async ( id ) => {
+  async ( id: number ) => {
     const response = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${APIKey}&language=en-US`)
     const data = await response.json()
     return data
@@ -44,10 +44,10 @@ export const movieByIdSlice = createSlice({
       state.status = "idle"
     });
 
-    builder.addCase(fetchMovieById.rejected, (state, { payload }) => {
+   /* builder.addCase(fetchMovieById.rejected, (state, { payload }) => {
       if (payload) state.error = payload.message
       state.status = "idle"
-    });
+    });*/
   }
 })
 

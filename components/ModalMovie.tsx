@@ -201,7 +201,8 @@ type PropsMovie = {
 }
 
 type PropsModalContent = {
-  movie: Array<PropsMovie>
+  //movie: Array<PropsMovie>
+  movie: any
 }
 
 type PropsModal = {
@@ -248,7 +249,7 @@ const ModalMovie: FC<PropsModal> = ({ showModal, setShowModal, movieId }) => {
     <>
     {showModal && (
       <Background onClick={closeModal} ref={modalRef}>
-        <ModalWrapper showModal={showModal}>
+        <ModalWrapper>
           { movie.result && (movie.result).map(movie => <ModalContent key={movie.id} movie={movie}/>) }
           <CloseModalButton aria-label='Close modal' onClick={(e)=> closeModalActions(e)} />
         </ModalWrapper>
@@ -262,7 +263,7 @@ const ModalContent: FC<PropsModalContent> = ({ movie }) => {
   return (
     <>
       <div className="bg">
-        <Image src={`https://image.tmdb.org/t/p/w1280/${movie.backdrop_path}`} alt={movie.title} layout="fill" srcSet="1x" />
+        <Image src={`https://image.tmdb.org/t/p/w1280/${movie.backdrop_path}`} alt={movie.title} layout="fill" />
         <div className="titles">
           <h2>{movie.title}</h2>
           <h3>{movie.tagline}</h3>

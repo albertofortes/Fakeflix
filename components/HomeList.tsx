@@ -73,13 +73,11 @@ type PropsMovie = {
 }
 
 type Props = {
-  movies: any[],
-  id: number
+  movies: Array<PropsMovie>
 }
 
 type PropsCard = {
-  movie: Array<PropsMovie>,
-  id: number,
+  movie: any,
   isModalVisible: (value: boolean, movieId: number) => void,
 }
 
@@ -106,7 +104,7 @@ const HomeList: FC<Props> = ({ movies }) => {
 const MovieCard: FC<PropsCard> = ({ movie, isModalVisible }) => {
   return (
     <HomeCardDiv onClick={e => isModalVisible(true, movie.id)}>
-      {<Image src={`https://image.tmdb.org/t/p/w300_and_h450_bestv2${movie.poster_path}`} alt={movie.title} layout="fill" srcSet="1x" /> } 
+      {<Image src={`https://image.tmdb.org/t/p/w300_and_h450_bestv2${movie.poster_path}`} alt={movie.title} layout="fill" /> } 
     </HomeCardDiv>
   )
 }
