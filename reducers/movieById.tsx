@@ -27,6 +27,9 @@ export const movieByIdSlice = createSlice({
   name: 'movie',
   initialState,
   reducers: {
+    eraser(state) {
+      state.result = []
+    } 
   },
   extraReducers: (builder) => {
     builder.addCase(fetchMovieById.pending, (state) => {
@@ -48,4 +51,5 @@ export const movieByIdSlice = createSlice({
   }
 })
 
+export const { eraser } = movieByIdSlice.actions
 export default movieByIdSlice.reducer

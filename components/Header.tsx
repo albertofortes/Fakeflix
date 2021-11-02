@@ -37,8 +37,10 @@ const Header: FC = () => {
   return (
     <HeaderWr>
       <div className="wrapper">
-        <Link href={'/.'}>
-          <Image src="/images/logo-netflix.png" alt="Logo Netflix" width={110} height={60} />
+        <Link href="/">
+          <a>
+            <Image src="/images/logo-netflix.png" alt="Logo Netflix" width={110} height={60} />
+          </a>
         </Link>
       </div>
     </HeaderWr>

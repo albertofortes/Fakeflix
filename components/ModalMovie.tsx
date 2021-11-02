@@ -9,6 +9,7 @@ import { MdClose } from 'react-icons/md';
 import { RootState } from '../store'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchMovieById } from '../reducers/movieById'
+import { eraser } from '../reducers/movieById'
 
 const Background = styled('div')`
   width: 100%;
@@ -211,7 +212,6 @@ type PropsModal = {
 
 const ModalMovie: FC<PropsModal> = ({ showModal, setShowModal, movieId }) => {
   const modalRef = useRef(null)
-
   const movie = useSelector((state: RootState) => state.movie)
   const dispatch = useDispatch()
 
@@ -219,6 +219,11 @@ const ModalMovie: FC<PropsModal> = ({ showModal, setShowModal, movieId }) => {
     if (modalRef.current === e.target) {
       setShowModal(false)
     }
+  }
+
+  const closeModalActions = (e:any):void => {
+    dispatch(eraser())
+    setShowModal(false)
   }
 
   const keyPress = useCallback(
@@ -245,7 +250,7 @@ const ModalMovie: FC<PropsModal> = ({ showModal, setShowModal, movieId }) => {
       <Background onClick={closeModal} ref={modalRef}>
         <ModalWrapper showModal={showModal}>
           { movie.result && (movie.result).map(movie => <ModalContent key={movie.id} movie={movie}/>) }
-          <CloseModalButton aria-label='Close modal' onClick={()=> setShowModal(false)} />
+          <CloseModalButton aria-label='Close modal' onClick={(e)=> closeModalActions(e)} />
         </ModalWrapper>
       </Background>
     )}

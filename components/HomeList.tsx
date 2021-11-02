@@ -73,7 +73,7 @@ type PropsMovie = {
 }
 
 type Props = {
-  movies: Array<PropsMovie>
+  movies: any[]
 }
 
 type PropsCard = {
