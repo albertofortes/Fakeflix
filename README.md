@@ -1,6 +1,10 @@
 # Fakeflix
 
-A learning project to keep in touch with latest ReactJS stacks
+![Fakeflix screeshot](./public/images/screeshot.png)
+
+Example at https://nostalgic-wilson-577a67.netlify.app/
+
+A learning project to keep in touch with latest ReactJS stacks.
 
 - TypeScript
 - NextJS 12.0.1
