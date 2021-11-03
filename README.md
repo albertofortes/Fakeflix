@@ -1,6 +1,6 @@
 # Fakeflix
 
-![Fakeflix screeshot](./public/images/screeshot.png)
+![Fakeflix screeshot](https://github.com/albertofortes/Fakeflix/blob/main/public/images/screenshot.png)
 
 Example at https://nostalgic-wilson-577a67.netlify.app/
 
