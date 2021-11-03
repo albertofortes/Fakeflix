@@ -41,6 +41,7 @@ const ModalWrapper = styled('div')`
   scroll-snap-type: x mandatory;
   scroll-padding: 0 2rem;
   z-index: @zindex--fixed;
+  font-size: 1.4rem;
 
   &::-webkit-scrollbar-track {
     border: none;
@@ -63,7 +64,8 @@ const ModalWrapper = styled('div')`
 
   @media (min-width: 960px) {
     max-width: 92rem;
-    max-height: 80vh;
+    max-height: 90vh;
+    font-size: 1.6rem;
   }
 
   @media (min-width: 1024px) {
@@ -78,8 +80,9 @@ const ModalWrapper = styled('div')`
   .bg {
     position: relative;
     overflow: hidden;
+    height: 25rem;
 
-    @media (min-width: 960px) {
+    @media (min-width: 768px) {
       height: 51.75rem;
     }
 
@@ -106,43 +109,63 @@ const ModalWrapper = styled('div')`
       position: absolute;
       z-index: 1;
       bottom: 2rem;
-      left: 4rem;
+      left: 2rem;
       color: #fff;
-    }
 
-    h2 {
-      font-size: 3rem;
-      margin: 0 0 1rem;
-    }
+      @media (min-width: 1024px) {
+        left: 4rem;
+      }
+    
+      h2 {
+        font-size: 2rem;
+        margin: 0 0 1rem;
 
-    h3 {
-      font-size: 2rem;
-      text-variant: italic;
-      margin: 0;
+        @media (min-width: 1024px) {
+          font-size: 3rem;
+        }
+      }
+  
+      h3 {
+        font-size: 1.4rem;
+        text-variant: italic;
+        margin: 0;
+
+        @media (min-width: 1024px) {
+          font-size: 2rem;
+        }
+      }
     }
   }
 
   .info {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     color: silver;
     padding: 1rem 2rem 2rem;
     line-height: 1.4;
+
+    @media (min-width: 768px) {
+      flex-direction: row;
+      justify-content: space-between;
+    }
 
     @media (min-width: 960px) {
       padding: 1rem 4rem 4rem;
     }
 
     .info__main {
-      width: 60%;
+      margin-bottom: 2rem;
+
+      @media (min-width: 768px) {
+        margin-bottom: 0;
+        width: 60%;
+      }
     }
 
-    .infor__meta {
-      width: 30%;
-    }
-
-    strong {
-      font-weight: 600;
+    .info__meta {
+      @media (min-width: 768px) {
+        width: 30%;
+      }
     }
 
     p {
@@ -159,6 +182,11 @@ const ModalWrapper = styled('div')`
       &:last-child {
         margin: 0;
       }
+    }
+
+    strong {
+      font-weight: 600;
+      font-size: 90%;
     }
 
     small {
