@@ -235,13 +235,14 @@ const ModalMovie: FC<PropsModal> = ({ showModal, setShowModal, movieId }) => {
     }, [setShowModal, showModal]
   )
 
+
   useEffect( () => {
       document.addEventListener('keydown', keyPress)
       return () => document.removeEventListener('keydown', keyPress)
     }, [keyPress]
   )
 
-  useEffect(() => {
+  useEffect(() => { 
     dispatch(fetchMovieById(movieId))
   }, [dispatch, movieId])
 

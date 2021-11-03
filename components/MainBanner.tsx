@@ -3,8 +3,6 @@ import styled from 'styled-components'
 
 import { MdInfoOutline } from 'react-icons/md';
 
-import Button from './Button'
-
 interface IProps {
   backdrop?: string;
 }
@@ -20,7 +18,7 @@ const MainBannerWrapper = styled('div')<IProps>`
   background-repeat: no-repeat;
   background-position: center bottom;
   background-size: cover;
-  background-image: url(https://image.tmdb.org/t/p/w1400_and_h450_face/${props => props.backdrop});
+  background-image: url(https://image.tmdb.org/t/p/w1920_and_h800_face/${props => props.backdrop});
 
   @media (min-width: 568px) and (orientation: Landscape) {
     padding-bottom: 7rem;
@@ -111,9 +109,32 @@ const MainBannerWrapper = styled('div')<IProps>`
   }
 `
 
+const Btn = styled.button`
+  cursor: pointer;
+  border: none;
+  border-radius: .4rem;
+  background-color: rgba(109, 109, 110, 0.7);
+  color: white;
+  padding: 1rem 1.4rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  display: flex;
+
+  &:hover {
+    background-color: rgba(109, 109, 110, 0.4)
+  }
+
+  .icon {
+    font-size: 110%;
+    vertical-align: middle;
+    margin-right: .4rem;
+  }
+`
+
 type Props = {
   //movie: Array<PropsMovie>
-  movie: any
+  movie: any,
+  openModal: (value: boolean, movieId: number) => void
 }
 
 type PropsMovie = {
@@ -125,7 +146,7 @@ type PropsMovie = {
   id: number
 }
 
-const MainBanner: FC<Props> = ({ movie }) => {
+const MainBanner: FC<Props> = ({ movie, openModal }) => {
   return (
     <MainBannerWrapper backdrop={movie.backdrop_path}>
       <div className="wrapper">
@@ -133,7 +154,9 @@ const MainBanner: FC<Props> = ({ movie }) => {
           <h2>{movie.title}</h2>
           <p>{movie.overview}</p>
           <div className="actions">
-            <Button><MdInfoOutline className="icon" /> Más información</Button>
+            <Btn onClick={e => openModal(true, movie.id)}>
+              <MdInfoOutline className="icon" /> Más información
+            </Btn>
           </div>
         </div>
       </div>

@@ -3,8 +3,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import styled from 'styled-components'
 
-import ModalMovie from './ModalMovie'
-
 const HomeListWrapper = styled.div`
   position: relative;
   top: -10rem;
@@ -73,37 +71,28 @@ type PropsMovie = {
 }
 
 type Props = {
-  movies: Array<PropsMovie>
+  movies: Array<PropsMovie>,
+  openModal: (value: boolean, movieId: number) => void
 }
 
 type PropsCard = {
   movie: any,
-  isModalVisible: (value: boolean, movieId: number) => void,
+  openModal: (value: boolean, movieId: number) => void
 }
 
-const HomeList: FC<Props> = ({ movies }) => {
-  const [showModal, setShowModal] = useState<boolean>(false);
-  const [movieId, setMovieId] = useState<number>(0);
-
-  const openModal = (e:any, id:number):void  => {
-    setMovieId(id)
-    setShowModal(prev => !prev)
-  }
-
+const HomeList: FC<Props> = ({ movies, openModal }) => {
   return (
     <>
       <HomeListWrapper>
-        { movies && movies.map(movie => <MovieCard key={movie.id} movie={movie} isModalVisible={openModal} />) }
+        { movies && movies.map(movie => <MovieCard key={movie.id} movie={movie} openModal={openModal} />) }
       </HomeListWrapper>
-
-      { showModal && <ModalMovie showModal={showModal} setShowModal={setShowModal} movieId={movieId} /> }
     </>
   )
 }
 
-const MovieCard: FC<PropsCard> = ({ movie, isModalVisible }) => {
+const MovieCard: FC<PropsCard> = ({ movie, openModal }) => {
   return (
-    <HomeCardDiv onClick={e => isModalVisible(true, movie.id)}>
+    <HomeCardDiv onClick={e => openModal(true, movie.id)}>
       {<Image src={`https://image.tmdb.org/t/p/w300_and_h450_bestv2${movie.poster_path}`} alt={movie.title} layout="fill" /> } 
     </HomeCardDiv>
   )

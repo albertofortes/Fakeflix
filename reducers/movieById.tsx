@@ -40,7 +40,6 @@ export const movieByIdSlice = createSlice({
     builder.addCase(fetchMovieById.fulfilled, (state, { payload }) => {
       state.result = []
       state.result.push(payload)
-      console.log(payload)
       state.status = "idle"
     });
 
